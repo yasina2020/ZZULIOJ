@@ -1,5 +1,5 @@
 #include "stdio.h"
-
+//111
 int speed(int a[],int n)
 {
     int t=0,x;
