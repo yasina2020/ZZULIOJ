@@ -1,54 +1,50 @@
 #include "stdio.h"
-//111
+#include "string.h"
+
+void BubbleSort(int a[],int n)
+{
+    int i,j,t;
+    for(i=1;i<n;i++)
+    {//控制轮数 n-1轮
+        for(j=0;j<=n-1-i;j++)
+        {//每一轮中相邻两个比较，
+            if(a[j]>a[j+1])
+                swap(&a[j],&a[j+1]);
+        }
+    }
+}
+
+void swap(int *a,int *b)
+{
+    int t;
+    t=*a;
+    *a=*b;
+    *b=t;
+}
+
+
 int main()
 {
-    struct A{
-    int x;
-    int f;
-    };
-    int n,t,cnt=0;
+    int n,cnt=0,t;
     scanf("%d",&n);
-    struct A a[n];
-    for (int i=0;i<n;i++)
+    int a[n];
+    for(int i=0;i<n-cnt;i++)
     {
-        scanf("%d",&a[i].x);
-        a[i].f=0;//不重复
-    }
-    //查重
-    for(int j=0;j<n;j++)
-    {
-        t=a[j].x;
-        for(int i=j+1;i<n;i++)
-            if(t=a[i].x)
+        t=0;
+        scanf("%d",&a[i]);
+        for(int j=0;j<i;j++)
+            if(a[i]==a[j])
             {
-                a[i].f=1;
                 cnt++;
+                t=i;
             }
-    }
-    //排序小---大
-    int min,idx=0;
-    for(int j=0;j<n;j++)
-    {
-        min=a[j].x;
-        for(int i=j;i<n;i++)
-       {
-         if(a[i].x<min)
-          {
-            min=a[i].x;
-            idx=i;
-          }
-       }
-        t=a[j];
-        a[j]=a[idx];
-        a[idx]=t;
+        if(t)
+            i--;
     }
 
-    printf("%d\n",cnt);
-    for(int i=0;i<n;i++)
-    {
-        if(a[i].f==0)
-            printf("%d ",a[i].x);
-    }
-
+    BubbleSort(a,n-cnt);
+    printf("%d\n",n-cnt);
+    for(int i=0;i<n-cnt;i++)
+        printf("%d ",a[i]);
     return 0;
 }
