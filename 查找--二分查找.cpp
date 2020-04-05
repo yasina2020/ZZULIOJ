@@ -1,19 +1,26 @@
 #include "stdio.h"
 
+void swap(int *a,int *b)
+{
+    int t;
+    t=*a;
+    *a=*b;
+    *b=t;
+}
+
 int BinSearch(int a[],int n,int x)//返回x的序号
 {
     int left,right,mid;
     left=0;
     right=n-1;
-
     while(left<=right)
     {
-        mid=(left+right)/2;
+        mid=left + (right - left) / 2;
         if(x==a[mid])
             return mid;
         else if(x<a[mid])
             right=mid-1;
-            else left=mid+1;
+        else left=mid+1;
     }
 
     return -1;
@@ -32,13 +39,6 @@ void BubbleSort(int a[],int n)
     }
 }
 
-void swap(int *a,int *b)
-{
-    int t;
-    t=*a;
-    *a=*b;
-    *b=t;
-}
 
 int main()
 {
@@ -50,9 +50,12 @@ int main()
         scanf("%d",&a[i]);
     }
     scanf("%d",&x);//输入要查找的值
-    //BubbleSort(a,n);//先排序
+
+    BubbleSort(a,n);//先排序
+
     t = BinSearch(a,n,x);//查找x，找到返回x的序号，否则返回-1；
     if(t==-1)
-    printf("未找到\n");
-    printf("已找到，x的位置为%d\n",t);
+        printf("未找到\n");
+    else
+        printf("已找到，x的位置为%d\n",t);
 }
