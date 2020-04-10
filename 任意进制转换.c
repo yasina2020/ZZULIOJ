@@ -24,7 +24,7 @@ int NToD(char *num , int n){
 }
 
 void DToM(int d,int m,char *mnum){//把十进制 d 化成m进制的mnum
-    //十进制化成其他进制  辗转相除 取余数 逆置
+    //十进制化成其他进制  
     int len = 0,r;
     do{
         r = d % m;
