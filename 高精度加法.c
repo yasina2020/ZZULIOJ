@@ -38,6 +38,7 @@ int main()
     int i=0;
     for(int j=len;j>=0;j--)
         str[i++]=c[j]+'0';
+
     if(strlen(str)==0)
         str[0]='0';
     printf("%s\n",str);
