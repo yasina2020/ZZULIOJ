@@ -11,7 +11,7 @@ const int MAXN = 200;
 vector<int> prime;
 bool IsPrime[MAXN];
 
-void Initial(){
+int Initial(){
     for(int i=0;i<MAXN;i++){
         IsPrime[i]=true;
     }
@@ -26,7 +26,7 @@ void Initial(){
             IsPrime[j]=false;
         }
     }
-    return ;
+    return 0;
 }
 int NumberOfPrimeFactor(int number){
     int answer = 0;
